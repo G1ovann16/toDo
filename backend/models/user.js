@@ -13,9 +13,9 @@ module.exports = (sequelize, DataTypes) => {
     direction: DataTypes.STRING
   }, {});
   User.associate = function(models) {
-    // User.belongToMany(models.Task,{
-    //   through: UserTask
-    // })
+    User.belongsToMany(models.Task,{
+      through: models.UserTask
+    })
     // associations can be defined here
   };
   // User.sync({force:true}).then(()=>

@@ -12,12 +12,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       register: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
-      TaskId: {
-        type: Sequelize.INTEGER
-      },
-      createdAt: {
+       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },

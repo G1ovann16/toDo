@@ -1,11 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const taskCategory = sequelize.define('taskCategory', {
+  const TaskCategory = sequelize.define('TaskCategory', {
     CategoryId: DataTypes.INTEGER,
     TaskId: DataTypes.INTEGER
   }, {});
-  taskCategory.associate = function(models) {
+  TaskCategory.associate = function(models) {
     // associations can be defined here
   };
-  return taskCategory;
+  return TaskCategory;
 };

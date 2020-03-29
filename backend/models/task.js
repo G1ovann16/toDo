@@ -8,26 +8,17 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     user: DataTypes.STRING,
-    status: DataTypes.STRING
+    statusId: DataTypes.STRING
   }, {});
   Task.associate = function(models) {
     // associations can be defined here
     Task.hasMany(models.Status);
-    // Task.belongToMany(models.Category,{
-    //   through: TaskCategory
-    // })
-    // Task.belongToMany(models.User,{
-    //   through: UserTask
-    // })
+    Task.belongsToMany(models.Category,{
+      through: models.TaskCategory
+    })
+    Task.belongsToMany(models.User,{
+      through: models.UserTask
+    })
   };
-  // Task.sync({force:true}).then(()=>
-  // {
-      // Task.bulkCreate(times(10, () =>({
-          // name: `${faker.name.firstName()}`,
-          // description: `${faker.lorem.sentence()}`,
-          // user: `${faker.name.findName}`,
-          // user: `${faker.random.word(10)}`
-      // })))
-  // })
   return Task;
 };

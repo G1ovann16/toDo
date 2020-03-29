@@ -8,6 +8,6 @@ router.get('/', TaskController.getAll)
 router.post('/', TaskController.postAll)
 
 // delete
-router.delete('/', TaskController.deleteAll)
+router.delete('/:id', TaskController.delete)
 
 module.exports=router;

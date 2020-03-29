@@ -4,6 +4,6 @@ const StatusController = require('../controllers/statusController')
 
 router.get('/', StatusController.getAll)
 
-
+router.get('/', StatusController.postAll)
 
 module.exports=router;

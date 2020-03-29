@@ -12,7 +12,20 @@ const StatusController = {
             })
     },
     postAll(req,res){
-
+      let { name, register}= req.body;
+      Status.create({
+          name,
+          register
+      })
+      .then(()=>{
+          res.statusCode=201;
+          res.json({status: 'ok'})
+      })
+      .catch(err =>{
+          res.statusCode=401;
+          res.json( {status: 'ko', message:err})
+      })
+  
      }
 }
 

@@ -18,7 +18,7 @@ const TaskController = {
             name,
             description,
             user,
-            status
+            statusId
         })
         .then(()=>{
             res.statusCode=201;
@@ -29,16 +29,10 @@ const TaskController = {
             res.json( {status: 'ko', message:err})
         })
     },
-
-    deleteAll(req,res){
-        let _id = req.body;
+    delete(req,res){
+        let id = req.params.id;
     let body = req.body;
-     Task.update({
-     title: body.title,
-     description: body.description,
-     author: body.author
-    },
-     {where: {id : _id}}
+     Task.destroy({where: {id : id}}
     ).then(()=>{
     res.statusCode=201;
     res.json({status: 'ok'})
@@ -47,9 +41,7 @@ const TaskController = {
     res.statusCode=401;
     res.json( {status: 'ko', message:err})
 })
- 
-
-    }
+     }
 }
 
 module.exports = TaskController;

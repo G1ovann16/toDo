@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING
   }, {});
   Category.associate = function(models) {
-    // Category.belongToMany(models.Task,{
-    //   through: taskcategory
-    // })
+    Category.belongsToMany(models.Task,{
+      through: models.TaskCategory
+    })
     // associations can be defined here
   };
   // Category.sync({force:true}).then(()=>
