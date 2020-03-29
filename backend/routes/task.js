@@ -1,25 +1,13 @@
 const router = require('express').Router();
- const { Task } = require('../models/index.js')
+ const { Task, Status } = require('../models/index.js')
+ const TaskController = require('../controllers/taskController.js')
 
-router.get('/', (req, res)=>{
+router.get('/', TaskController.getAll)
 
-    Task.findAll()
-    .then(task => res.send(task))
-    .catch(err=>{
-        console.log(err);
-        res.task(500).send({message: "error to load to task"})
-      })
-})
+// post
+router.post('/', TaskController.postAll)
 
-router.post('/', (req, res)=>{
-
-    Task.create({...req.body}) 
-    .then(task => res.task(201).send(task))
-    .catch(err=>{
-        console.log(err);
-        res.task(500).send({message: "error to add to task"})
-      })
-})
-
+// delete
+router.delete('/', TaskController.deleteAll)
 
 module.exports=router;

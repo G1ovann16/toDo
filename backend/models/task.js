@@ -13,6 +13,12 @@ module.exports = (sequelize, DataTypes) => {
   Task.associate = function(models) {
     // associations can be defined here
     Task.hasMany(models.Status);
+    // Task.belongToMany(models.Category,{
+    //   through: TaskCategory
+    // })
+    // Task.belongToMany(models.User,{
+    //   through: UserTask
+    // })
   };
   // Task.sync({force:true}).then(()=>
   // {

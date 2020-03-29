@@ -5,13 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     TaskId: DataTypes.INTEGER
   }, {});
-  Status.associate = function(models) {
+  Status.associate = function (models) {
     // associations can be defined here
     Status.belongsTo(models.Task);
   };
 
-  Status.sync({force:true}).then(()=>
-{
+  Status.sync({ force: true }).then(() => {
     Status.create(
       {
         name: "without beging",
@@ -30,6 +29,6 @@ module.exports = (sequelize, DataTypes) => {
         TaskId: 4
       }
     )
-})
+  })
   return Status;
 };

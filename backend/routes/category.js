@@ -1,25 +1,11 @@
 const router = require('express').Router();
  const { Category } = require('../models/index.js')
+const CategoryController = require('../controllers/categoryController.js')
 
-router.get('/', (req, res)=>{
+// get
+router.get('/',CategoryController.getAll )
 
-    Category.findAll()
-    .then(category => res.send(category))
-    .catch(err=>{
-        console.log(err);
-        res.category(500).send({message: "error to load to category"})
-      })
-})
-
-router.post('/', (req, res)=>{
-
-    Category.create({...req.body}) 
-    .then(category => res.category(201).send(category))
-    .catch(err=>{
-        console.log(err);
-        res.category(500).send({message: "error to add to category"})
-      })
-})
-
+// post
+router.post('/', CategoryController.postAll)
 
 module.exports=router;

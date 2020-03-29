@@ -1,25 +1,11 @@
 const router = require('express').Router();
  const { User } = require('../models/index.js')
+ const UserController = require('../controllers/userController.js')
 
-router.get('/', (req, res)=>{
+router.get('/', UserController.getAll)
 
-    User.findAll()
-    .then(user => res.send(user))
-    .catch(err=>{
-        console.log(err);
-        res.user(500).send({message: "error to load to user"})
-      })
-})
+// post
 
-router.post('/', (req, res)=>{
-
-    User.create({...req.body}) 
-    .then(user => res.user(201).send(user))
-    .catch(err=>{
-        console.log(err);
-        res.user(500).send({message: "error to add to user"})
-      })
-})
-
+router.post('/', UserController.postAll)
 
 module.exports=router;

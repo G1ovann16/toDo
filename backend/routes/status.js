@@ -1,25 +1,9 @@
 const router = require('express').Router();
- const { Status } = require('../models/index.js')
+const { Status, Task } = require('../models/index.js')
+const StatusController = require('../controllers/statusController')
 
-router.get('/', (req, res)=>{
+router.get('/', StatusController.getAll)
 
-    Status.findAll()
-    .then(status => res.send(status))
-    .catch(err=>{
-        console.log(err);
-        res.status(500).send({message: "error to load to status"})
-      })
-})
-
-router.post('/', (req, res)=>{
-
-    Status.create({...req.body}) 
-    .then(status => res.status(201).send(status))
-    .catch(err=>{
-        console.log(err);
-        res.status(500).send({message: "error to add to status"})
-      })
-})
 
 
 module.exports=router;
